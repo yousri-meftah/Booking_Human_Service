@@ -14,9 +14,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu"
-
+import Link from "next/link"
 import { useState } from "react"
-import { Link } from 'react-router-dom';
 export default function DropdownMenuDemo() {
     const [islogin, setislogin] = useState<boolean>(false)
     if(!islogin){
@@ -26,8 +25,8 @@ export default function DropdownMenuDemo() {
               <Button variant="outline">Open</Button>
             </DropdownMenuTrigger>
         <DropdownMenuContent className="w-30">
-          <DropdownMenuItem>Login</DropdownMenuItem>
-          <DropdownMenuItem>Sign In</DropdownMenuItem>
+          <DropdownMenuItem><Link href="/Login">Login</Link></DropdownMenuItem>
+          <DropdownMenuItem><Link href="/Register">Sign In</Link></DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
         )

@@ -1,11 +1,11 @@
 "use client"
 
-import { Icons } from "../component/loadingicon"
+//import { Icons } from "../component/loadingicon"
 import { Button } from "../../components/ui/button"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
-import ClientForm from "../component/CientForm"
-import SocieteForm from "../component/SocieteForm"
+import ClientForm from "../../components/sections/CientForm"
+import SocieteForm from "../../components/sections/SocieteForm"
 import {
   Card,
   CardContent,
@@ -17,15 +17,19 @@ import {
 
 
 export default function SignIn() {
+    const [content, setcontent] = useState<string>("Client account")
     const [isClient, setisClient] = useState<boolean>(true)
     const handclient = () => {
         setisClient(true)
+        setcontent("Client account")
     }
     const handsociete = () => {
         setisClient(false)
+        setcontent("company account") 
     }
   return (
-    <Card className={cn("w-[780px]")}>
+    <main className={"container flex min-h-screen flex-col items-center justify-between p-24"}>
+    <Card className={cn("w-full lg:w-[650px]")}>
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Create an account</CardTitle>
         <CardDescription>
@@ -42,7 +46,7 @@ export default function SignIn() {
           <Button variant="outline" onClick={handsociete}>
            { //<Icons.google className="mr-2 h-4 w-4" />
            }
-            societe
+            company
           </Button>
         </div>
         <div className="relative">
@@ -51,7 +55,7 @@ export default function SignIn() {
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
+              {content}
             </span>
           </div>
         </div>
@@ -61,5 +65,6 @@ export default function SignIn() {
         <Button className="w-full">Create account</Button>
       </CardFooter>
     </Card>
+    </main>
   )
 }
