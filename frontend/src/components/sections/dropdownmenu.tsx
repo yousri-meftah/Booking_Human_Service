@@ -16,8 +16,9 @@ import {
 } from "../../components/ui/dropdown-menu"
 import Link from "next/link"
 import { useState } from "react"
-export default function DropdownMenuDemo() {
+export default function DropdownMenuDemo({ islog}: { islog: boolean }) {
     const [islogin, setislogin] = useState<boolean>(false)
+    setislogin(islog)
     if(!islogin){
         return (
           <DropdownMenu>

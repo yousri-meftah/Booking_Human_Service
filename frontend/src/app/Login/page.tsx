@@ -15,17 +15,35 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card"
+import { useRouter } from 'next/navigation'; // Import useRouter
 import {useState} from "react"
 import { FormEvent } from "react"
 export default function AuthenticationPage() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const router = useRouter();
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
-
-
-        console.log("submitted", email," password", password);
+        const t1="Luz.Robel70"
+        const t2="TZWRBENRHM7boe7"
+        fetch('http://localhost:5000/admin/auth/login', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json',
+                 },
+                 body: JSON.stringify({ username:t1, password:t2 }),
+             })
+             .then(response => response.json())
+             .then(data =>{
+              //console.log(data)
+                if(!data){
+                    throw new Error(data.message || "An error occurred during login.");
+                }
+                localStorage.setItem('token', data.data.token);
+                //console.log('Logged in successfully:', data);
+                router.push('/'); 
+             })
+             .catch(error => console.error('Error:', error));
     }
   return (
     <main className={"flex min-h-screen flex-col items-center justify-between p-24"}>
