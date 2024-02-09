@@ -35,5 +35,6 @@
   ├── views        - templates
   └── utils        - contains utility functions    
 ```
-## Backend Design:
 
+## Backend Design:
+![diagram(1)](https://github.com/yousri-meftah/Booking_Human_Service/assets/131286715/0bfce865-de7b-483f-9bde-b23cf6754428)
