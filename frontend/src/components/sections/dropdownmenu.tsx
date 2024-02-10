@@ -15,10 +15,13 @@ import {
   DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu"
 import Link from "next/link"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 export default function DropdownMenuDemo({ islog}: { islog: boolean }) {
-    const [islogin, setislogin] = useState<boolean>(false)
-    setislogin(islog)
+    const [islogin, setislogin] = useState<boolean>(true)
+    useEffect(() => {
+      // Update the state only when the prop changes
+      setislogin(islog);
+    }, [islog]);
     if(!islogin){
         return (
           <DropdownMenu>

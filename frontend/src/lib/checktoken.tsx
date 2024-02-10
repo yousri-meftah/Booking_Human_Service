@@ -1,8 +1,9 @@
 export default function checkTokenExists(): boolean {
     // Attempt to retrieve the token from localStorage
-    const token = localStorage.getItem('token');
-  
-    // Check if the token is not null (which means it exists)
+    var token = null;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const token = localStorage.getItem('token');
+    }
     return token !== null;
   }
   
